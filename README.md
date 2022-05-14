@@ -1,1 +1,1 @@
-# Javascipt-Basics
+# Javascript-Basics
