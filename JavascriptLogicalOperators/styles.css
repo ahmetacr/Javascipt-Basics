@@ -1,0 +1,59 @@
+* {
+    /*border: 2px solid red;*/
+    
+}
+
+body {
+    /*color :antiquewhite;*/
+}
+
+.headerSection{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.theme {
+    margin-right:auto;
+}
+
+.header {
+    font-size: xx-large;
+    font-weight: 900;
+}
+
+select {
+    max-width: 150px;
+}
+
+.pictures {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.headerImage, .M5ImageClass {
+    height : 250px;
+    width: 500px;
+    margin: 10px;
+}
+
+.Selections {
+    display: flex;
+    flex-direction: column;
+}
+
+.WeatherComment {
+    font-size: larger;
+    padding : 5px;
+}
+
+.CarsAndComments {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    margin: 5px;
+}

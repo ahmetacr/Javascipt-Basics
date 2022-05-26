@@ -1,0 +1,13 @@
+* {
+    background-color: black;
+}
+
+body {
+    color:antiquewhite;
+}
+
+.header {
+    text-align: center;
+    font-size: xx-large;
+    font-weight: 900;
+}
