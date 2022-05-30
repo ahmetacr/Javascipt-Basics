@@ -3,9 +3,9 @@ html {
     height:inherit;
 }
 
-canvas {
+/* canvas {
     display: block;
-}
+} */
 
 body {
     margin: 0;
@@ -27,3 +27,7 @@ button {
     justify-content: center;
 }
 
+.addingFunction {
+    display:flex;
+    flex-direction: column;
+}
