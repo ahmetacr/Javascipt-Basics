@@ -1,6 +1,6 @@
-In this Project, We are going to working on Functions of Javascript.
+In this Project, We are going to be working on Functions of Javascript.
 
-We went through various different examples of function usage in JavaScript. 
+We went through various different type of examples regarding function usage in JavaScript. 
 We learned the ones with variables, non-variables, and even functions without names!
 There is also a new type of function syntax called arrow functions. They are easy to use and read. They are short and makes life easier at all! 
 
