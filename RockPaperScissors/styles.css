@@ -1,0 +1,17 @@
+* {
+    background-color: darkgreen;
+}
+
+
+h1 {
+    text-align: center;
+}
+
+.information p {
+    text-align: center;
+    font-size: larger;
+    font-weight: 600;
+    border: 4px solid darkblue;
+    padding: 5px;
+    margin: 10px;
+}
