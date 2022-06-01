@@ -481,5 +481,9 @@ gs = "gavatasaray"
 // console.log(capitalize("ahmed")); // Ahmed
 
 
-let lastLetter = (string) => string.charAt(string.length -1);
-console.log(lastLetter("Zekeriya"))
+let lastLetter = (string) => string.charAt(string.length -1); // simple and easy to read
+console.log(lastLetter("Zekeriya")); // returns a 
+
+
+
+
