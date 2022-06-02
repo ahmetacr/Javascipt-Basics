@@ -5,6 +5,10 @@
 
 // This game is going to be played with the computer!
 
+// Let's add a welcome message!
+console.log("%cWelcome to Rock, Paper, Scissors Game!","color:white; font-weight:800; font-size:20px; padding:5px;margin:5px;");
+console.log("Please write 'game()' to start the game!")
+
 
 // Let's just create a function for computer to select random choice
 //  In between Rock-Paper-Scissors
@@ -65,7 +69,6 @@ let playGame = (playerChoice,computerPlay) => {
 let game = () => {
     let computerWinCount = 0;
     let playerWinCount = 0;
-    console.log("%cWelcome to Rock, Paper, Scissors Game!","color:white; font-weight:800; font-size:20px; padding:5px;margin:5px;");
     console.log("%cPlease Make a Choice!","color:darkgrey;font-size:14px;");
     let selection = ""
     for (let round = 0; round < 5; round++) {
@@ -90,10 +93,10 @@ let game = () => {
     if (playerWinCount > computerWinCount) {
         console.log("%cCongrats! You Won!","color:green; font-size:14px;");
     } else if (playerWinCount == computerWinCount) {
-        console.log("%cThe match ended in draw! Try again...", "color:yellow; font-size:14px")
+        console.log("%cThe match ended in draw! Try again...", "color:aqua; font-size:14px")
     } else {
         console.log("%cYou lost! Try again...","color: red; font-size:14px;")
     }
 }
 
-game();
+//game();
