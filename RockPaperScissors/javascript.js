@@ -28,7 +28,7 @@ let computerPlay = () => {
 
 
 let ResultText;
-
+// Lets define the rules of the play!
 let playGame = (playerChoice,computerPlay) => {
 
     if (playerChoice.toLowerCase() == computerPlay.toLowerCase()) {
@@ -61,6 +61,7 @@ let playGame = (playerChoice,computerPlay) => {
 
 // console.log(playGame("Rock",computerPlay()));
 
+// Lets create the Game!
 let game = () => {
     let computerWinCount = 0;
     let playerWinCount = 0;
