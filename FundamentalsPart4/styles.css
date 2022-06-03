@@ -1,0 +1,32 @@
+* {
+    background-color: darkslategray;
+}
+
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 12px 3px;
+    /*border: 2px solid red;*/
+    max-height: 50px;
+    gap: 20px;
+}
+
+
+.header h1 {
+    
+}
+
+
+.header p {
+    font-style: italic;
+    font-weight: 700;
+}
+
+
+#acar-logo {
+    height: 60px;
+    width: 90px;
+}
