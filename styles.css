@@ -38,13 +38,22 @@ ul a:link,ul a:visited {
     padding: 20px 20px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    
+    display: inline-block;   
 }  
-ul a:hover { background-color:lightgreen; }
+
+ul a {
+    transition: transform 50ms;
+}
+
+ul a:hover { 
+    transform: scale(1.1);
+    /*opacity: 0;*/
+    /*transform: translateY(-10px);*/
+    background-color:lightgreen; }
 ul {
     display: flex;
     align-items: center;
     flex-direction: column;
+
 }
 /*We can use 'ul a:link', 'ul a:visited','ul a:hover','ul a:active' to style the links */
