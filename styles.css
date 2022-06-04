@@ -1,0 +1,50 @@
+* {
+    background-color: darkslategrey;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 12px 3px;
+    /*border: 2px solid red;*/
+    max-height: 50px;
+    gap: 20px;
+}
+
+.header p {
+    font-style: italic;
+    font-weight: 700;
+}
+
+
+#acar-logo {
+    height: 65px;
+    width: 120px;
+}
+
+
+ul {list-style-type:none;}
+ul a:link,ul a:visited {
+    font-size: larger;
+    font-weight: 600;
+    width: 200px;
+    height:40px;
+    list-style-type:none;
+    background-color: white;
+    color: black;
+    border: 2px solid green;
+    padding: 20px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    
+}  
+ul a:hover { background-color:lightgreen; }
+ul {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+/*We can use 'ul a:link', 'ul a:visited','ul a:hover','ul a:active' to style the links */
