@@ -223,6 +223,401 @@ let slicedFruits = fruitsNew.slice(1); // Slices from 1 to end
 slicedFruits = fruits.slice(2,5); // Starting from 2.element till 5.th element but 5 not included
 // console.log(slicedFruits);
 
+"AUTOMATIC toString()"
+/* 
+    JS automatically converts an array to a comma separated string
+    when a primitive value is expected.
+    This is always the case when you try to output an array.
+    These two examples will produce the same result:
+*/
+ 
+/*
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits.toString();
+*/
+
+/*
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits; 
+*/
+
+
+"All JavaScript objest have a toString() method."
+
+
+/*---------------------------------------------------------------------*/
+"Here we are going to work on the loops on JavaScript!"
+/* Loops are all about doing the same thing over and over again. 
+Often, the code will be slightly different each time round the loop,
+or the same code will run but with different variables. */
+
+"Lets start with the for ... of loop: "
+// The basic tool for looping through a collection is the for...of loop:
+const cats = ["Leopart","Serval","Jaguar","Tiger","Caracal","Lion"];
+// for (const cat of cats) console.log(toUpper(cat));
+for (const cat of cats.sort()) {
+    //console.log(cat);
+}
+/*
+    In the example above, for (const cat of cats) says:
+        1.Given the collection 'cats',
+            get the first item in the collection.
+        2.Assign it to the variable 'cat' and then
+            run the code between the curly brackets {}.
+        3.Get the next item, and repeat (2) 
+            until you've reached the end of the collection
+*/
+
+"map() and filter()"
+// JavaScript also has more specialized loops for collections, 
+//   and we'll mention two of them here
+
+// map() can be used to do something to each item in a collection and
+//   create a new collection containing the changed items:
+
+let toUpper = (string) => string.toUpperCase();
+
+const upperCats = cats.map(toUpper);
+// console.log(upperCats); // ['CARACAL', 'JAGUAR', 'LEOPART', 'LION', 'SERVAL', 'TIGER']
+
+/* 
+    Here we pass a funtion into cats.map(), and map() calls the function once
+    for each item in the array,passing in the item. It then adds the 
+    return value from each function call to a new array, and finally
+    returns the new array. In this case the function we provide converts
+    the item to uppercase, so the resulting array contains all our cats in uppercase!
+*/
+
+
+// filter() can be used to test each item in a collection, and create a new collection
+// containing only items that match
+
+let lCat = (cat) =>  cat.startsWith("L");
+
+const filtered = cats.filter(lCat);
+// console.log(filtered); // ['Leopart', 'Lion']
+// console.log(Array.isArray(filtered)); // True
+
+/* 
+    It looks like the map(), except the function we pass in returns
+    a boolean: if it returns true, then the item is included in 
+    the new array. Our function tests that the item starts with 
+    the letter "L",so the result is an array containing only cats whose names 
+    start with "L"
+*/
+
+
+// Note that map() and filter() are both often used with function expressions
+//  Using function expressions we could rewrite the example above to be much
+//      more compact
+
+const filteredAgain = cats.filter((cat) => cat.startsWith("L"));
+// console.log(filteredAgain); // ['Leopart','Lion']
+
+
+"The Standard for loop: "
+/*
+    for(initializer; condition; final-expression) {
+        // code to run
+    }
+*/
+/*
+const results = document.querySelector('#results');
+
+function calculate() {
+  for (let i = 1; i < 10; i++) {
+    const newResult = `${i} x ${i} = ${i * i}`;
+    results.textContent += `${newResult}\n`;
+  }
+  results.textContent += '\n...finished!';
+}
+
+const calculateBtn = document.querySelector('#calculate');
+const clearBtn = document.querySelector('#clear');
+
+calculateBtn.addEventListener('click', calculate);
+clearBtn.addEventListener('click', () => results.textContent = '');
+*/
+const results = document.querySelector("#results");
+function calculate() {
+  for (let i = 1; i < 10; i++) {
+    const newResult = `${i} x ${i} = ${i * i}`;
+    results.textContent += `${newResult}` + `\n`;
+    }
+  results.textContent += '\n...finished!';
+}
+const calculateBtn = document.querySelector('#calculate');
+const clearBtn = document.querySelector('#clear');
+calculateBtn.addEventListener("click",calculate);
+clearBtn.addEventListener("click", () => results.textContent = "");
+
+
+// Looping through collections with a for loop: 
+/* 
+    We have already used the for...of loop to iterate through a collection
+    but now we are going to be using the regular for loop to do the same.
+    Here is the example that we did: 
+    
+    const cats = ['Leopard', 'Serval', 'Jaguar', 'Tiger', 'Caracal', 'Lion'];
+    
+    for (const cat of cats) {
+    console.log(cat);
+    }
+
+    Now we are going to be rewriting the same loop:
+*/
+
+for(i = 0; i < cats.length; i ++) {
+    // console.log(cats[i]);
+}
+
+let myFavCats = "My cats are called: ";
+for (const cat of cats) {
+    //myFavCats = (`${myFavCats} ${cat},`);
+}
+// console.log(myFavCats);
+
+
+for (i = 0; i < cats.length; i++) {
+    if (i < cats.length-1) {
+        myFavCats += (`${cats[i]}, `);
+    } else {
+        myFavCats += (`and ` + `${cats[i]}`);
+    }
+}
+// console.log(myFavCats);
+
+
+// Exiting Loops with break: 
+// a break statement will immediately exit rthe loop amd make
+//  the browser move on to any code that follows it.
+
+
+// Lets make a search contact example:
+const contacts = ["Ahmet:607-677-5251","Mehmet:210-665-5251",
+                    "Selim:650-297-89-84","Recep:218-266-1512"]
+
+const contactInput = document.querySelector("#search");
+const contactBtn = document.querySelector("#contactButton");
+const para = document.querySelector("#contactText") 
+
+
+
+contactBtn.addEventListener("click", () =>{    
+    let answer = "";
+    for (let contact = 0; contact < contacts.length;contact++) {
+        if (contactInput.value == ""){
+            answer = "Please enter the contact to search for!";
+            break
+        } else if (contacts[contact].toLowerCase().includes(contactInput.value.toLowerCase())) {
+            answer = [`${contacts[contact].split(":")[0]}'s number is: ${contacts[contact].split(":")[1]}`]
+            // answer = contacts[contact];
+            break;
+        } else {
+            answer = "Sorry, contact not found!"
+        }
+    } para.textContent = answer;
+});
+
+"Skippking Iterations with Continue; "
+/* 
+    The 'continue' tatement works in a similar manner to 'break',
+    but instead of breaking out of the loop entirely, it skips 
+    to the next iteration of the loop, Let's look at another example 
+    that takes a number as an input, and returns only the numbers that 
+    are squares of integers (whole numbers).
+ */
+
+const numberInput = document.querySelector("#square");
+const squareBtn   = document.querySelector("#squareButton");
+const squareText  = document.querySelector("#squareText");
+
+squareBtn.addEventListener("click", () => {
+    let resultText = "Output: "
+    inputNumber = numberInput.value;
+    if (inputNumber == '') {
+        resultText = "Please enter a number!";
+    }
+    for (let i = 1; i <= inputNumber; i++) {
+
+        if (Math.sqrt(i) == (Math.floor(Math.sqrt(i)))) {
+            resultText += ` ${i}\n`;    
+        }  else {
+            continue;
+        }
+    }
+    squareText.textContent = resultText;
+
+
+});
+
+/* Same Example another solution:
+    const para = document.querySelector('p');
+    const input = document.querySelector('input');
+    const btn = document.querySelector('button');
+
+    btn.addEventListener('click', () => {
+    para.textContent = 'Output: ';
+    const num = input.value;
+    input.value = '';
+    input.focus();
+    for (let i = 1; i <= num; i++) {
+        let sqRoot = Math.sqrt(i);
+        if (Math.floor(sqRoot) !== sqRoot) {
+        continue; // It uses continue to skip the non-integer values.
+        }
+        para.textContent += `${i} `;
+    }
+    });
+*/
+
+/*--------------------------------------------------*/
+"while and do..while: "
+/* Syntax:
+    initializer
+    while (condition) {
+        // code to run
+    
+        final-expression
+    }
+This works in a very similar way to the 'for' loop,
+except that the initializer variable is set before 
+the loop, and the final-expression is included inside
+the parentheses. The condition is included inside the
+parantheses, which are preceded by the 'while' keyword
+rather than 'for'.
+*/
+
+// Lets define the myFavoriteCats variable again using while loop:
+
+let myFavoriteCats = "My cats are called: "
+let cat = 0;
+
+while (cat < cats.length) {
+    if (cat < cats.length-1) {
+        myFavoriteCats += (`${cats[cat]}, `);
+    } else {
+        myFavoriteCats += (`and ` + `${cats[cat]}`);
+    }
+    cat++;
+}
+// console.log(myFavoriteCats); // My cats are called: Caracal, Jaguar, Leopart, Lion, Serval, and Tiger
+
+
+"do...while loop: "
+/* Syntax:
+    initializer
+    do {
+        // code to run
+
+        final-expression
+    } while (condition)
+*/
+"IMPORTANT!"
+/* 
+    The main difference between a 'do...while' loop and a 'while' loop is that the 
+    code inside a 'do...while' loop is always executed at least once. That's becuase
+    the condition comes after the code inside the loop. So we always run that code,
+    then check to see if we need to run it again. In 'while' and 'for' loops, the check
+    comes first, so the code might never executed.
+*/
+
+
+
+do {
+    console.log("AHMET")
+} while(false); // Returns AHMET at once in the console!
+
+// Lets find the fav cats using do...while loop at this time:
+// console.log(cats); // ['Caracal', 'Jaguar', 'Leopart', 'Lion', 'Serval', 'Tiger']
+cat = 0;
+let myFavs = ""
+do {
+    if (cat < cats.length-1) {
+        myFavs += (`${cats[cat]}, `);
+    } else {
+        myFavs += (`and ` + `${cats[cat]}`);
+    }
+    cat++;
+} while(cat < cats.length);
+// console.log(myFavs); // Caracal, Jaguar, Leopart, Lion, Serval, and Tiger
+
+
+/*------------------------------------------------------------------------------------*/
+/* 
+    let output = document.querySelector('.output');
+    output.innerHTML = '';
+    let i = 10;
+    while (i >= 0) {
+        const para = document.createElement('p');
+        para.textContent = "";
+        if (i == 10) {
+            para.textContent += "Countdown 10";
+            output.appendChild(para);
+        } else if (i == 0) {
+            para.textContent = "Blast Off!"
+            output.appendChild(para);
+        } else {
+            para.textContent += i
+            output.appendChild(para);
+        }
+        i--;
+    } 
+*/
+// The code above is a solution for https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Looping_code#active_learning_launch_countdown
+
+
+"Continue from the link below: "
+// https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Looping_code#active_learning_filling_in_a_guest_list
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
