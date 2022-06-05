@@ -567,58 +567,154 @@ do {
 // The code above is a solution for https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Looping_code#active_learning_launch_countdown
 
 
-"Continue from the link below: "
+"Active Learning Part2: Filling in a guest list "
 // https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Looping_code#active_learning_filling_in_a_guest_list
+/* 
+    In this exercise, we want you to take a list of names stored in an array and put
+    them into a guest list. But it's not quite that easy -- we don't want to let Phil
+    and Lola in because they are greedy and rude, and always eat all the food! We have 
+    two lists, one for guests to admit, and one for guests refuse.
+*/
+const people = ['Chris', 'Anne', 'Colin', 'Terri', 'Phil', 'Lola', 'Sam', 'Kay', 'Bruce'];
+
+const admitted = document.querySelector('.admitted');
+const refused = document.querySelector('.refused');
+admitted.textContent = 'Admit: ';
+refused.textContent = 'Refuse: ';
+
+// loop starts here
+for (let i = 0; i < people.length; i++) {
+    if (people[i] == "Phil" || people[i] == "Lola") {
+        refused.textContent += people[i] + ", ";
+    } else {
+        admitted.textContent += people[i] + ", ";
+    }
+}
+admitted.textContent = admitted.textContent.slice(0,-2) + "."
+refused.textContent = refused.textContent.slice(0,-2) + "."
+    
+
+// refused.textContent += ;
+// admitted.textContent += ;
+
+/*----------------------------------------------------------------------*/
+// Loops from another article (jaascript.info/while-for)
+
+// Curly braces are not required for a single-line body
+
+let single = 3;
+// while (single) console.log(single--); // 3 2 1 and stops
 
 
+// We can omit 'begin' (let i = smt) if i already declared. Ex:
+let omitBegin = 0
+
+// for(; omitBegin < 3; omitBegin++) console.log(omitBegin); // 0 1 2 
+
+// We can also remove the step part (i++) like a while loop. Ex:
+let omitStep = 0;
+// for(; omitStep < 5;) console.log(omitStep++); // 0 1 2 3 4
 
 
+// We can even remove everything to create an infinite loop;
+/* for (;;) {
+    // Repeats without stopping
+} 
+*/
+
+"!!!!"
+/* 
+    The Ordinary 'break' after 'input' would only break the inner loop
+    That's not sufficient. LABELS, come to the rescue!
+
+    A label is an identifier with a colon before a loop:
+
+    labelName: for(...) {
+        ...
+    }
+The break <labelName> statement in the loop below breaks out the label:
+*/
 
 
+outer: for (let i = 0; i <3; i++) {
+    for (let j = 0; j < 3; j++) {
+        let input;
+        // input = prompt(`Value at coords (${i},${j})`,"");
+        // if an empty string or canceled, then break out of both loops
+        if (!input) break outer;
+
+        // do something with the value
+    }
+}
+// console.log("Done!");
 
 
+/* 
+    We can olsu move the label onto a seperate line:
+        outer:
+        for (let i = 0; i < 3; i+=) {...}
+*/
+
+for (let i = 2; i < 10; i+= 2) console.log(i);
+
+let k = 0;
+while (k < 3) console.log(`Number : ${k++}`);
+
+/*
+ userNumberLoop : for (let userInputNumber;;) {
+    userInputNumber = prompt("Please enter a number more than 100!");
+    if (userInputNumber > 100) {
+        break userNumberLoop;
+    } else if (userInputNumber < 100 && userInputNumber > 0) {
+        alert("Please Enter the number again!");
+    } else {
+        break userNumberLoop;
+    }
+} */
+/*
+let numberUserInput;
+do {
+    numberUserInput = prompt("Please enter a number more than 100!");
+} while (numberUserInput <= 100 && numberUserInput);
+*/
+
+/* Lets create a function that finds the prime numbers from 2 to n (n = input) */
+
+const primeInput = document.querySelector("#primeNumber");
+const primeBtn = document.querySelector("#primeButton");
+const primeText = document.querySelector("#primeText");
+/*
+primeBtn.addEventListener("click", () => {
+    let nonprimelist = [];
+    let numberList = [];
+    let primeNumberList = [];
+    inputN = primeInput.value;
+    for (let i = 2; i <= inputN; i++) {
+        numberList.push(i);
+        for (let k = 2; k < inputN; k++) {
+            if(i % k == 0 && i !== k) {
+                nonprimelist.push(i);
+                break;
+            } 
+        }
+    } 
+    for (let number of numberList) {
+        if (!nonprimelist.includes(number)) primeNumberList.push(number);    
+    }
+    primeText.textContent = primeNumberList;
+});*/
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* Shorter solution is the following: */
+primeBtn.addEventListener("click", () => {
+    inputN = primeInput.value;
+    primeFor:
+    for (let i = 2;i <= inputN; i++) {
+        for (let k = 2; k < i; k++) {
+            if(i % k == 0) continue primeFor;
+        } 
+        primeText.textContent += `\n${i}`;
+    } 
+});
 
 
