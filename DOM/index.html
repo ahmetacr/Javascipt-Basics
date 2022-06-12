@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <link rel = stylesheet href = "styles.css">
+    <script src = "javascript.js" defer></script>
+</head>
+<body>
+    "Important Note: "
+    <!-- 
+        Your JS, for the most part, is run whenever the JS file is run, or when the
+        script tag is encountered in the HTML, if you are including your JS at the top
+        of your file, many of these DOM manipulation methods will not work because the 
+        JS code is being run before the nodes are created in the DOM. The simplest way
+        to fix this is to include your JS at the bottom of your HTML file so that it 
+        gets run after the DOM nodes are parsed and created.
+
+        Alternatively, you can link the JS file in the <head> of your HTML document.
+        Use the <script> tag with the src attribute containing the path to the JS file,
+        and include the 'defer' keyword to load the file after the HTML is parsed, 
+        such as  what we did above!
+    -->
+
+    <div id = "container">
+        <div class = "display"></div>
+        <div class = "controls"></div>
+    </div>
+
+</body>
+</html>
