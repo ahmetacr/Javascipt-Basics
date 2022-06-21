@@ -1,14 +1,115 @@
-// console.log("Hello World!");
-
 // We are going to be creating a Rock Paper Scissors game 
-//  Which is going to be played by using console!
-
 // This game is going to be played with the computer!
 
-// Let's add a welcome message!
-console.log("%cWelcome to Rock, Paper, Scissors Game!","color:white; font-weight:800; font-size:20px; padding:5px;margin:5px;");
-console.log("Please write 'game()' to start the game!")
 
+// // // // We are going to create buttons and a play environment so that 
+// // // //  the game could be played on the page rather than the console!
+// // Lets start with creating the div for buttons!
+const buttonsDiv = document.createElement('div');
+buttonsDiv.classList.add('buttons');
+document.body.appendChild(buttonsDiv);
+// // Create the buttons
+const btnR = document.createElement('button');
+const btnP = document.createElement('button');
+const btnS = document.createElement('button');
+btnR.id = "rock"; btnR.textContent = "ROCK"; btnR.classList.add('buttons')
+btnP.id = "paper"; btnP.textContent = "PAPER"; btnP.classList.add('buttons')
+btnS.id = "scissors"; btnS.textContent = "SCISSORS"; btnS.classList.add('buttons')
+buttonsDiv.appendChild(btnR); buttonsDiv.appendChild(btnP); buttonsDiv.appendChild(btnS);
+/*Lets create the information box which is going to include:
+Info about each game, Current Game Status,and Scores */
+const container = document.createElement('div');
+container.classList.add('information');
+document.body.appendChild(container);
+// // Create the Result Text Box;
+const playInfo = document.createElement('p');
+playInfo.id = "resultText";
+playInfo.textContent = "Here is going to be the info about each game!";
+container.appendChild(playInfo);
+// // Create the Information about the ongoing game;
+const gameStat = document.createElement('p');
+gameStat.id = 'infoGame';
+gameStat.textContent = "This is going to be the game status"
+container.appendChild(gameStat);
+// // Create a ScoreBox
+const scoreBox = document.createElement('p');
+scoreBox.id = "scoreBox";
+scoreBox.textContent = "SCORES";
+container.appendChild(scoreBox);
+// // Create the Final Result Box 
+const finalResult = document.createElement('p');
+finalResult.id = 'finalResult';
+finalResult.textContent = "";
+document.body.appendChild(finalResult);
+
+// Create a replay button:
+const btnReplay = document.createElement('button');
+btnReplay.textContent = 'REPLAY';
+btnReplay.style.cssText = 'margin:20px auto 20px auto';
+document.body.appendChild(btnReplay);
+btnReplay.style.display = 'none';
+/*-------------------------------------------------------------------------------*/
+// // // // LETS MAKE THE MAGIC HAPPEN!
+const buttons = document.querySelectorAll('button');
+let computerWinCount = 0;
+let playerWinCount = 0;
+
+buttons.forEach(button => button.addEventListener('click',function theGame() {
+
+    let answer = button.id;
+    let computerSelection = computerPlay();
+   
+    newResult = playGame(answer,computerSelection);
+    if (newResult.includes("Win!")) {
+        playerWinCount += 1;
+        gameStat.style.cssText = 'color:darkgreen;'
+    } else if(newResult.includes("lose!")) {
+        gameStat.style.cssText = 'color:darkred;'
+        computerWinCount += 1;
+    } else {
+        gameStat.style.cssText = 'color:black;'
+    }
+    playInfo.textContent = `You Played: ${answer.toUpperCase()} - Computer Played: ${computerSelection.toUpperCase()}`;
+    gameStat.textContent = newResult;
+    scoreBox.textContent = `You: ${playerWinCount} - Computer: ${computerWinCount}`;
+
+    
+    
+    if (playerWinCount == 5 && computerWinCount < 5) {
+        finalResult.textContent = "YOU WON!";
+        finalResult.style.cssText = 'color:green;text-align:center;'
+        buttons.forEach(button => button.style.display = 'none');
+        playInfo.style.display = 'none';
+        gameStat.style.display = 'none';
+        //scoreBox.style.display = 'none';
+        btnReplay.style.display = 'block';
+    } else if (playerWinCount < 5 && computerWinCount == 5) {
+        finalResult.textContent = "YOU LOSE!";
+        finalResult.style.cssText = 'color:red;text-align:center;'
+        buttons.forEach(button => button.style.display = 'none');
+        playInfo.style.display = 'none';
+        gameStat.style.display = 'none';
+        //scoreBox.style.display = 'none';
+        btnReplay.style.display = 'block';
+    }
+    btnReplay.addEventListener('click',() =>{
+        buttons.forEach(button => button.style.display = 'flex');
+        computerWinCount = 0;
+        playerWinCount = 0;
+        playInfo.style.display = 'block';
+        gameStat.style.display = 'block';
+        //scoreBox.style.display = 'block';
+        playInfo.textContent = "Here is going to be the info about each game!";
+        gameStat.textContent = "This is going to be the game status";
+        scoreBox.textContent = "SCORES";
+        btnReplay.style.display = 'none';
+        finalResult.textContent = "";
+    })
+
+}));
+
+
+/*-------------------------------------------------------------------------------*/
 
 // Let's just create a function for computer to select random choice
 //  In between Rock-Paper-Scissors
@@ -29,7 +130,6 @@ let computerPlay = () => {
     }
     return choiceComputer; 
 }
-
 
 let ResultText;
 // Lets define the rules of the play!
@@ -63,16 +163,15 @@ let playGame = (playerChoice,computerPlay) => {
 
 }       
 
-// console.log(playGame("Rock",computerPlay()));
-
 // Lets create the Game!
-let game = () => {
+/*let game = () => {
     let computerWinCount = 0;
     let playerWinCount = 0;
     console.log("%cPlease Make a Choice!","color:darkgrey;font-size:14px;");
     let selection = ""
     for (let round = 0; round < 5; round++) {
-        selection = prompt("Rock, Paper, or Scissors?");
+        // selection = prompt("Rock, Paper, or Scissors?");
+        selection = 
         computerSelection = computerPlay();
         let result = playGame(selection,computerSelection);
         console.log(`%c+ You played: %c${selection.toLowerCase()}`,"color:yellow;font-weight:500","color:white;font-weight:500");
@@ -98,5 +197,5 @@ let game = () => {
         console.log("%cYou lost! Try again...","color: red; font-size:14px;")
     }
 }
+*/
 
-//game();
