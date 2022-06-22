@@ -198,30 +198,22 @@ let playGame = (playerChoice,computerPlay) => {
 
     if (playerChoice.toLowerCase() == computerPlay.toLowerCase()) {
         ResultText = (`Same choice as ${playerChoice.toLowerCase()}. So, there is no winner at this time!`);
-    
     } else if ((playerChoice.toLowerCase() == "rock") && (computerPlay.toLowerCase() == "paper")) {
         ResultText = ("Paper Beats Rock! You lose!");     
-        //computerWinCount += 1;
     } else if ((playerChoice.toLowerCase() == "rock") && (computerPlay.toLowerCase() == "scissors")) {
         ResultText = ("Rock Beats Scissors! You Win!");
-        //playerWinCount += 1;
     } else if ((playerChoice.toLowerCase() == "paper") && (computerPlay.toLowerCase() == "rock")) {
         ResultText = ("Paper Beats Rock! You Win!");
-        //playerWinCount += 1;
     } else if ((playerChoice.toLowerCase() == "paper") && (computerPlay.toLowerCase() == "scissors")) {
         ResultText = ("Scissors Beats Paper! You lose!");
-        //computerWinCount += 1;
     } else if ((playerChoice.toLowerCase() == "scissors") && (computerPlay.toLowerCase() == "rock")) {
         ResultText = ("Rock Beats Scissors! You lose!");
-        //computerWinCount += 1;
     } else if ((playerChoice.toLowerCase() == "scissors") && (computerPlay.toLowerCase() == "paper")) {
         ResultText = ("Scissors Beats Paper! You Win!");
-        //playerWinCount += 1;
     } else {
         ResultText = ("Wrong Answer Please Try Again!");
     }
     return ResultText;
-
 }       
 
 
