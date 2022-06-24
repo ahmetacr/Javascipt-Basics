@@ -15,5 +15,6 @@ body {
 .container {
     display: flex;
 }
-.hoverOn {background-color: green ;}
+.box {background-color:white;outline:0.5px solid grey;}
+/* .multicolor {background-color: black ;outline:0.5px solid grey;}  */
 .hoverOff {color: blue !important; background-color: white !important;}

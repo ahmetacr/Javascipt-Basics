@@ -1,5 +1,13 @@
 // Welcome to the Etch a Sketch Project!
 // Create a webpage with a 16*16 grid of square divs:
+const DEFAULT_SIZE = 32;
+const DEFAULT_MODE = 'color';
+const DEFAULT_COLOR = 'red';
+
+let current_size = DEFAULT_SIZE;
+let current_mode = DEFAULT_MODE;
+let current_color = DEFAULT_COLOR;
+
 const container = document.querySelector('.container');
 const gridContainer = document.createElement('div');
 gridContainer.classList.add('gridContainer');
@@ -8,11 +16,28 @@ container.appendChild(gridContainer);
 // Grid size 16x16 means 16x16px squares fill the document
 //   which means we gotta create enough squares to fill the given space
 // supposed to be 2**n
-function hoverThis() {
-    this.classList.toggle('hoverOn');
-    let hoverOn = document.querySelectorAll('.hoverOn');
-    hoverOn.forEach(hover => hover.style.cssText = `background-color:${ColorRand()}`);
+
+/*----------------------Multicolor MODE----------------------------------------------*/
+// Create the random color:
+function ColorRand() {
+    let randomColor = `#` + Math.floor(Math.random()*16777215).toString(16);
+    return randomColor;
 }
+function multicolorMode() {
+    this.classList.remove('box');
+    this.classList.toggle('multicolor');
+    let multicolor = document.querySelectorAll('.multicolor');
+    multicolor.forEach(box => {
+        box.style.outline = '0.5px solid grey'
+        box.style.backgroundColor += `${ColorRand()}`;
+    });
+}
+const multicolorBTN = document.getElementById('multicolorMode');
+multicolorBTN.addEventListener('click',() => {
+    gridContainer.innerHTML = ''
+    console.log(current_size);
+    createBox(current_size,multicolorMode);;
+});
 /*---------------RESIZING-----------------------------------------------------*/
 
 const select = document.createElement('select');
@@ -29,12 +54,12 @@ function resizeGrid() {
 }
 resizeGrid();
 select.addEventListener('change',(event) => {
-    // console.log(select.value);
+    current_size = select.value.split('x')[0];
     if(select.value == 'Size') {
         console.log("Size selected!");
     } else { 
         sizeOpt = select.value;
-        console.log(sizeOpt);
+        // console.log(sizeOpt);
         sizeOpt = sizeOpt.split('x')[0];
         let size = sizeOpt;
         gridContainer.innerHTML = '';
@@ -43,28 +68,36 @@ select.addEventListener('change',(event) => {
 })
 /*----------------------------------------------------------------------*/
 
-function createBox(size) {
+function createBox(size = DEFAULT_SIZE,mode) { 
     times = (512**2)/(size**2);
     for(i = 0;i < times;i++) {
         const box = document.createElement('div');
-        // box.className = 'box';
         box.classList.add('box');
-        box.style.cssText += `height:${size}px;width:${size}px;background-color:white;outline:0.5px solid grey;`;
-        box.style.cssTex
+        box.style.height = `${size}px`;
+        box.style.width = `${size}px`;
         gridContainer.appendChild(box);
-        box.addEventListener('mouseover',hoverThis);
+        box.addEventListener('mouseover',mode);
     }
 }
-createBox(32);
 
+createBox();
 /*---------------------------------------------------------------------*/
-// Create the random color:
-function ColorRand() {
-    let randomColor = `#` + Math.floor(Math.random()*16777215).toString(16);
-    return randomColor;
-}
-const tryA = ColorRand();
+/*--asdasdasdasdasdasdasdasdasdsdasd
+
+
+
+
+
 /*----------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
 
 /*----------------------------------------------------*/
 /*
@@ -111,7 +144,7 @@ css:input[type='color']:: webkit-color-swatch-wrapper {
     }
     input[type='range']:: webkit-slider-thumb {
         -webkit-appearance:none;
-        
+
     }
 
 
