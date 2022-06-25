@@ -1,22 +1,36 @@
 // Welcome to the Etch a Sketch Project!
 // Create a webpage with a 16*16 grid of square divs:
+const container = document.querySelector('.container');
+const gridContainer = document.createElement('div');
 const DEFAULT_SIZE = 32;
 const DEFAULT_MODE = 'color';
 const DEFAULT_COLOR = 'red';
 
-let current_size = DEFAULT_SIZE;
+gridContainer.classList.add('gridContainer');
+container.appendChild(gridContainer);
+
 let current_mode = DEFAULT_MODE;
 let current_color = DEFAULT_COLOR;
+let current_size = DEFAULT_SIZE;
 
-const container = document.querySelector('.container');
-const gridContainer = document.createElement('div');
-gridContainer.classList.add('gridContainer');
-
-container.appendChild(gridContainer);
-// Grid size 16x16 means 16x16px squares fill the document
-//   which means we gotta create enough squares to fill the given space
-// supposed to be 2**n
-
+/*---------------------Color Mode------------------------------------------------------*/
+colorBtn = document.getElementById('selectClr');
+colorBtn.addEventListener('input', (e) => {
+    current_color = e.target.value;
+    current_mode = 'colorMode';
+    gridContainer.innerHTML = '';
+    createBox(current_size,colorMode);
+});
+function colorMode() {
+    this.classList.remove('box');
+    this.classList.remove('multicolor');
+    this.classList.toggle('colorMode');
+    let color = document.querySelectorAll('.colorMode');
+    color.forEach(box => {
+        box.style.outline = '0.5px solid grey'
+        box.style.backgroundColor += `${current_color}`;
+    });
+}
 /*----------------------Multicolor MODE----------------------------------------------*/
 // Create the random color:
 function ColorRand() {
@@ -25,6 +39,7 @@ function ColorRand() {
 }
 function multicolorMode() {
     this.classList.remove('box');
+    this.classList.remove('colorMode');
     this.classList.toggle('multicolor');
     let multicolor = document.querySelectorAll('.multicolor');
     multicolor.forEach(box => {
@@ -34,9 +49,11 @@ function multicolorMode() {
 }
 const multicolorBTN = document.getElementById('multicolorMode');
 multicolorBTN.addEventListener('click',() => {
-    gridContainer.innerHTML = ''
+    current_mode = 'multicolorMode';
+    console.log(current_mode);
+    gridContainer.innerHTML = '';
     console.log(current_size);
-    createBox(current_size,multicolorMode);;
+    createBox(current_size,multicolorMode);
 });
 /*---------------RESIZING-----------------------------------------------------*/
 
@@ -66,23 +83,24 @@ select.addEventListener('change',(event) => {
         createBox(size);
     }
 })
-/*----------------------------------------------------------------------*/
+/*---------------------------CREATING THE BOXES-------------------------------------------*/
 
 function createBox(size = DEFAULT_SIZE,mode) { 
-    times = (512**2)/(size**2);
+    times = (512**2)/(size**2); // they just did size*size
     for(i = 0;i < times;i++) {
         const box = document.createElement('div');
         box.classList.add('box');
         box.style.height = `${size}px`;
         box.style.width = `${size}px`;
-        gridContainer.appendChild(box);
         box.addEventListener('mouseover',mode);
+        box.addEventListener('mousedown',mode);
+        gridContainer.appendChild(box);
     }
 }
 
 createBox();
 /*---------------------------------------------------------------------*/
-/*--asdasdasdasdasdasdasdasdasdsdasd
+
 
 
 

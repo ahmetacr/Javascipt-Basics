@@ -3,6 +3,9 @@ body {
     color: #ffffffe4;
     background-color: rgb(4, 79, 54);
 }
+.tools ul{
+    list-style-type: none;
+}
 .gridContainer {
     display: flex;
     flex-wrap: wrap;
