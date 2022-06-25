@@ -12,24 +12,36 @@ container.appendChild(gridContainer);
 let current_mode = DEFAULT_MODE;
 let current_color = DEFAULT_COLOR;
 let current_size = DEFAULT_SIZE;
+/*-----------------------ERASE MODE--------------------------------------------------*/
 
+
+
+
+
+
+/*-----------------------Clear The Page----------------------------------------------*/
+const clearBTN = document.getElementById('clear');
+clearBTN.addEventListener('click',() => {
+    const boxes = document.querySelectorAll('.box');
+    boxes.forEach(box => box.style.backgroundColor = 'white')});
 /*---------------------Color Mode------------------------------------------------------*/
 colorBtn = document.getElementById('selectClr');
-colorBtn.addEventListener('input', (e) => {
-    current_color = e.target.value;
-    current_mode = 'colorMode';
-    gridContainer.innerHTML = '';
-    createBox(current_size,colorMode);
-});
-function colorMode() {
-    this.classList.remove('box');
+colorBtn.addEventListener('input', colorMode);
+function colorFunction() {
+    console.log(this.style.backgroundColor);
+    // this.classList.remove('box');
     this.classList.remove('multicolor');
     this.classList.toggle('colorMode');
-    let color = document.querySelectorAll('.colorMode');
-    color.forEach(box => {
-        box.style.outline = '0.5px solid grey'
-        box.style.backgroundColor += `${current_color}`;
-    });
+    this.style.outline = '0.5px solid grey'
+    console.log("Current:" + current_color);
+    this.style.backgroundColor = `${current_color}`;
+}
+function colorMode(e) {
+    current_mode = colorFunction;
+    current_color = e.target.value;
+    const boxes = document.querySelectorAll('.box');
+    boxes.forEach(box => box.removeEventListener('mouseover',multicolorFunction));
+    boxes.forEach(box => box.addEventListener('mouseover',colorFunction));
 }
 /*----------------------Multicolor MODE----------------------------------------------*/
 // Create the random color:
@@ -37,26 +49,21 @@ function ColorRand() {
     let randomColor = `#` + Math.floor(Math.random()*16777215).toString(16);
     return randomColor;
 }
-function multicolorMode() {
-    this.classList.remove('box');
+function multicolorFunction() {
     this.classList.remove('colorMode');
     this.classList.toggle('multicolor');
-    let multicolor = document.querySelectorAll('.multicolor');
-    multicolor.forEach(box => {
-        box.style.outline = '0.5px solid grey'
-        box.style.backgroundColor += `${ColorRand()}`;
-    });
+    this.style.outline = '0.5px solid grey'
+    this.style.backgroundColor = `${ColorRand()}`;
+}
+function multicolorMode() {
+    current_mode = multicolorFunction;
+    const boxes = document.querySelectorAll('.box');
+    boxes.forEach(box => box.removeEventListener('mouseover',colorFunction));
+    boxes.forEach(box => box.addEventListener('mouseover',multicolorFunction));
 }
 const multicolorBTN = document.getElementById('multicolorMode');
-multicolorBTN.addEventListener('click',() => {
-    current_mode = 'multicolorMode';
-    console.log(current_mode);
-    gridContainer.innerHTML = '';
-    console.log(current_size);
-    createBox(current_size,multicolorMode);
-});
+multicolorBTN.addEventListener('click',multicolorMode);
 /*---------------RESIZING-----------------------------------------------------*/
-
 const select = document.createElement('select');
 document.body.insertBefore(select,container);
 function resizeGrid() {
@@ -90,23 +97,13 @@ function createBox(size = DEFAULT_SIZE,mode) {
     for(i = 0;i < times;i++) {
         const box = document.createElement('div');
         box.classList.add('box');
+        box.style.backgroundColor = 'white';
         box.style.height = `${size}px`;
         box.style.width = `${size}px`;
-        box.addEventListener('mouseover',mode);
-        box.addEventListener('mousedown',mode);
         gridContainer.appendChild(box);
     }
 }
-
 createBox();
-/*---------------------------------------------------------------------*/
-
-
-
-
-
-
-/*----------------------------------------------------------------------*/
 
 
 
