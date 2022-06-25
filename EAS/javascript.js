@@ -13,12 +13,23 @@ let current_mode = DEFAULT_MODE;
 let current_color = DEFAULT_COLOR;
 let current_size = DEFAULT_SIZE;
 /*-----------------------ERASE MODE--------------------------------------------------*/
-
-
-
-
-
-
+const eraseBTN = document.getElementById('erase');
+eraseBTN.addEventListener('click',eraseMode);
+function eraseFunction() {
+    this.classList.remove('colorMode');
+    this.classList.remove('multicolor');
+    this.classList.toggle('eraseMode');
+    this.style.outline = '0.5px solid grey'
+    this.style.backgroundColor = `${current_color}`;
+}
+function eraseMode(e) {
+    current_mode = eraseFunction;
+    current_color = 'white';
+    const boxes = document.querySelectorAll('.box');
+    boxes.forEach(box => box.removeEventListener('mouseover',multicolorFunction));
+    boxes.forEach(box => box.removeEventListener('mouseover',colorFunction));
+    boxes.forEach(box => box.addEventListener('mouseover',eraseFunction));
+}
 /*-----------------------Clear The Page----------------------------------------------*/
 const clearBTN = document.getElementById('clear');
 clearBTN.addEventListener('click',() => {
@@ -30,6 +41,7 @@ colorBtn.addEventListener('input', colorMode);
 function colorFunction() {
     console.log(this.style.backgroundColor);
     // this.classList.remove('box');
+    this.classList.remove('eraseMode');
     this.classList.remove('multicolor');
     this.classList.toggle('colorMode');
     this.style.outline = '0.5px solid grey'
@@ -40,6 +52,7 @@ function colorMode(e) {
     current_mode = colorFunction;
     current_color = e.target.value;
     const boxes = document.querySelectorAll('.box');
+    boxes.forEach(box => box.removeEventListener('mouseover',eraseFunction));
     boxes.forEach(box => box.removeEventListener('mouseover',multicolorFunction));
     boxes.forEach(box => box.addEventListener('mouseover',colorFunction));
 }
@@ -50,6 +63,7 @@ function ColorRand() {
     return randomColor;
 }
 function multicolorFunction() {
+    this.classList.remove('eraseMode');
     this.classList.remove('colorMode');
     this.classList.toggle('multicolor');
     this.style.outline = '0.5px solid grey'
@@ -58,6 +72,7 @@ function multicolorFunction() {
 function multicolorMode() {
     current_mode = multicolorFunction;
     const boxes = document.querySelectorAll('.box');
+    boxes.forEach(box => box.removeEventListener('mouseover',eraseFunction));
     boxes.forEach(box => box.removeEventListener('mouseover',colorFunction));
     boxes.forEach(box => box.addEventListener('mouseover',multicolorFunction));
 }
