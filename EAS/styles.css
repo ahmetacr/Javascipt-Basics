@@ -1,11 +1,74 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html, body { height: 100%; width: 100%; margin: 0;}
 body {
     color: #ffffffe4;
     background-color: rgb(4, 79, 54);
 }
-.tools ul{
-    list-style-type: none;
+.header { 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 12px 3px;
+    max-height: 50px;
+    gap: 20px;
 }
+#acar-logo {
+    margin-top: 10px;
+    height: 90px;
+    width: 120px;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.tools {
+    width: 32rem;
+}
+
+button {
+    font-family: 'Open Sans';
+    width: 6rem;
+    color: #ffffff;
+    text-transform: Capitalize;
+    text-decoration: none;
+    background: #ed3330;
+    padding: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    border: none;
+    transition: all 0.4s ease 0s;
+  }
+  
+  button:hover {
+    background: #434343;
+    letter-spacing: 1px;
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+    transition: all 0.4s ease 0s;
+  }
+
+
+.tools ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    gap:2rem;
+}
+.tools button,.tools input{
+    height: 40px;
+    width: 80px;
+}
+
 .gridContainer {
     display: flex;
     flex-wrap: wrap;
@@ -15,11 +78,40 @@ body {
     width:  32rem;
     /* border: 2px solid black; */
 }
-.container {
-    display: flex;
-}
 .box {background-color:white;outline:0.5px solid grey;}
-/* .multicolor {background-color: black ;outline:0.5px solid grey;}  */
-.colorMode {
-    /* border:10px solid black; */
+
+.selectSize {
+    margin-top: 10px;
+    height: 2rem;
+    width: 6rem;
+    background-color: rgb(215, 228, 227);
 }
+
+input[type=color]{
+	width: 40px;
+	height: 40px;
+	border: none;
+	border-radius: 40px;
+	background: none;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+	padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+	border: solid 1px #000; /*change color of the swatch border here*/
+	border-radius: 40px;
+}
+
+.footer {
+    /* background-color: grey; */
+    font-weight: 800;
+    font-style: italic;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position:absolute; 
+    bottom:0;
+    margin: 0;
+    width:100%;
+    height:70px;   /* Height of the footer*/ 
+} 

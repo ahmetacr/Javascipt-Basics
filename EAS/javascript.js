@@ -80,7 +80,8 @@ const multicolorBTN = document.getElementById('multicolorMode');
 multicolorBTN.addEventListener('click',multicolorMode);
 /*---------------RESIZING-----------------------------------------------------*/
 const select = document.createElement('select');
-document.body.insertBefore(select,container);
+container.appendChild(select);
+select.classList.add('selectSize');
 function resizeGrid() {
     const SelectDefault = document.createElement('option');
     SelectDefault.textContent = "Size";
@@ -105,6 +106,9 @@ select.addEventListener('change',(event) => {
         createBox(size);
     }
 })
+
+
+
 /*---------------------------CREATING THE BOXES-------------------------------------------*/
 
 function createBox(size = DEFAULT_SIZE,mode) { 
