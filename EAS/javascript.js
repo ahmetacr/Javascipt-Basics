@@ -125,15 +125,6 @@ function createBox(size = DEFAULT_SIZE,mode) {
 createBox();
 
 
-
-
-
-
-
-
-
-
-/*----------------------------------------------------*/
 /*
 Notes:
 html: <input id = 'sizeSlider' type = 'range' value=16(means 16 options we got) min = 1 max = 64 /> 
