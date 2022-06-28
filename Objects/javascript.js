@@ -194,7 +194,7 @@ console.log(user8.noSuchProperty === undefined); // true means 'no such property
 // 'key' in object
 // EX:
 
-let user9 = {name: 'Johnatan', age: 35};
+let user9 = {name: 'Jonathan', age: 35};
 console.log('age' in user9 ); // True, user.age exist
 console.log('asdasd' in user9); // false, user.asdasd. doesn't exist
 
@@ -306,6 +306,183 @@ user12.age = 25; // add one more
 for (let prop in user12) {
     console.log(prop); //name, lastName,age
 }
+
+/*          SUMMARY
+    Objects are associative arrays with several special features.
+    They store properties (key-value pairs), where:
+    - Property keys must be strings or symbols (usually strings)
+    - Values can be of any type.
+
+    To access a property, we can use:
+    - The dot notation: obj.property.
+    - Square brackets notation: obj['propperty']. Square brackets allow taking
+      the key from a variable, like obj[varWithKey].
+
+    Additional Operators:
+    - To delete a property: delete obj.prop
+    - To check if a property with the given key exists: 'key' in obj.
+    - To iterate over an object: for (let key in obj) loop.
+
+    What we've studied so far is called a 'plain object', or just object.
+
+    There are many other kinds of objects in JavaScript:
+    - Array: to store ordered data collections,
+    - Date: to store the information about the date and time,
+    - Error: to store the information about an error,
+    - ... and so on.
+*/
+
+// console.log(user8.noSuchProperty === undefined); // true means 'no such property'
+
+function isEmpty(obj) {
+    for (let key in obj) return false; return true;
+}
+let schedule = {};
+console.log(isEmpty(schedule));
+
+
+let salaries = {
+    John:100,
+    Ann: 160,
+    Pete:130,
+}
+
+let sum = 0;
+for (let key in salaries) {
+    sum += salaries[key];
+}
+console.log(sum);
+
+let menu = {
+    widht:200,
+    height:300,
+    title:'myMenu',
+};
+
+function multiplyNumeric(obj) {
+    for (let key in obj) {
+        if(Number.isInteger(obj[key])) {
+            obj[key] *= 2
+        }
+    }
+}
+
+multiplyNumeric(menu);
+console.log(menu);
+
+/*
+    Let's see how MND tutorial goes with objects!
+*/
+
+// const person = {
+//     name: ['Bob','Smith'],
+//     age:32,
+//     bio: function() {
+//         console.log(`${this.name[0]} ${this.name[1]} 
+//         is ${this.age} years old.`);
+//     },
+//     introduceSelf: function() {
+//         for (i in this.name) {
+//             console.log(`Hello! I'm ${this.name[i]}`);
+//         }
+//     }
+// }
+// console.log('-----------------------')
+// console.log(person.introduceSelf());
+// console.log(person.name);
+
+
+// We can also use objects as object properties!
+const person = {
+    name: {
+        first: 'Bob',
+        last: 'Smith',
+    },
+    age: 32,
+    bio() {
+        console.log(`${this.name.first} ${this.name.last} is ${this.age} years old!`);
+    },
+}
+
+// console.log(person.bio());
+// console.log(person.name.last);
+
+
+"Bracket Notation: "
+
+// instead of person.name.first we can use:
+console.log(person['name']['first']); // Bob!
+
+
+"Setting Object Members: "
+person.age = 45;
+person.name.last = 'Acar'
+console.log(person.name.last);
+person['name'].last = 'Turk';
+console.log(person.name.last);
+person.name['first'] = 'Seda';
+console.log(person['name'].first); // we can use different combinations together!
+
+// can also change or create new functions:
+person['eyes'] = 'hazel';
+person.farewell = function() {
+    console.log('Bye Everybody!');
+}
+console.log('eyes:' + person['eyes']);
+console.log(person.farewell());
+
+// We can also add member names using bracket notation 
+
+const myDataName = 'height';
+const myDataValue = '1.75m';
+person[myDataName] = myDataValue;
+
+// console.log(person);
+
+
+"What is 'This'?"
+
+/*
+    The 'this' keyword refers to the current object the code is being 
+    written inside -- so in this case 'this' is equivalent to person.
+    So, why not just write 'person' instead? 
+
+    Well, when you only have to create a single object literal, it's not 
+    so useful. But if you create more than one, this enables you to use 
+    the same method definition for every object you create.
+
+    Let's illustrate what that means:
+*/
+
+
+const person1 = {
+    name:'Chris',
+    introduceSelf() {
+        console.log(`Hi! I'm ${this.name}.`)
+    }
+}
+
+const person2 = {
+    name:'Deepti',
+    introduceSelf() {
+        console.log(`Hi! I'm ${this.name}.`)
+    }
+}
+
+/* 
+    In this case, person1.introduceSelf() outputs 'Hi! I'm Chris.';
+    person2.introduceSelf() on the other hand outputs 'Hi! I'm Deepti.', 
+    even though the method's code is exactly same in each case. This isn't 
+    hugely useful when you are writing out object literals by hand,
+    but it will be essential when we start using constructors to create more 
+    than one object fomr a single object definition, and that's the subject of 
+    the next section!
+*/
+
+
+
+
+
 
 
 
