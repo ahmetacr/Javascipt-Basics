@@ -1,4 +1,9 @@
 * {
     background-color: darkslategrey;
-    color: limegreen;
+    color: greengreen;
+}
+
+#btn2 {
+    height: 80px;
+    width: 240px;
 }
