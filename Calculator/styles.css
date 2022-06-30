@@ -11,22 +11,24 @@ h1 {
     color:hsl(49, 20%, 26%)
 }
 .container {
+    border-radius: 5px;
     background-color: antiquewhite;
     margin-left:auto;
     margin-right: auto;
     height: 18rem;
     width: 15rem;
     padding: 0.2em;
-    border:3px solid green;
+    border:2px solid green;
 }
 .container p {
     background-color: rgb(247, 248, 245);
-    text-align: center;
+    text-align:end;
     /* height:  2em; */
     padding: 0.9em;
-    margin:  4px 10px;
+    margin:  4px 0px 4px auto;
     border: 1px solid orange;
 }
+
 .container .resultBox {
     /* border:2px solid black; */
 }
