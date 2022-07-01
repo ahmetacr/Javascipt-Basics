@@ -11,12 +11,12 @@ h1 {
     color:hsl(49, 20%, 26%)
 }
 .container {
-    border-radius: 5px;
+    border-radius: 15px;
     background-color: antiquewhite;
     margin-left:auto;
     margin-right: auto;
-    height: 19rem;
-    width: 15rem;
+    height: 20rem;
+    width: 16rem;
     padding: 0.2em;
     border:2px solid green;
 }
@@ -33,27 +33,45 @@ h1 {
 }
 
 .container .displayBox {
+    border-radius: 5px;
     background-color: rgb(247, 248, 245);
     text-align:right;
     height:  2.5em;
     padding: 0.5em;
-    margin:  4px 0px 4px auto;
-    border: 1px solid orange;
+    margin:  0.5em 1.5em;
+    border: 2px solid orange;
 }
 
 
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0.5em;
+    padding: 2px;
+}
 
 .buttons button {
+    border-radius: 5px;
     height: 3em;
     width: 3.6em;
     margin:3px;
     /* max-width: fit-content; */
 }
-.buttons {
-    margin: 4px;
-    padding: 2px;
+
+.buttons button:hover {
+    background-color: steelblue;
+    /* max-width: fit-content; */
 }
 
 #divide, #multiply, #add, #subtract, #equals {
-    background-color: #FFCC00 !important;
+    background-color: #FFCC00;
+}
+
+#divide:hover,#multiply:hover,#add:hover,#subtract:hover {
+    background-color: #b18e00;
+}
+
+#equals:hover {
+    background-color: greenyellow;
 }
