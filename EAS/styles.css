@@ -103,7 +103,8 @@ input[type="color"]::-webkit-color-swatch {
 }
 
 .footer {
-    /* background-color: grey; */
+    color:rgba(0, 0, 0, 0.87);
+    background-color: grey;
     font-weight: 800;
     font-style: italic;
     display: flex;
@@ -113,5 +114,5 @@ input[type="color"]::-webkit-color-swatch {
     bottom:0;
     margin: 0;
     width:100%;
-    height:70px;   /* Height of the footer*/ 
+    height:7%;   /* Height of the footer*/ 
 } 
