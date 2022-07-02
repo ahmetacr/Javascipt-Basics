@@ -50,12 +50,9 @@ function getNum1() {
     }
     return number1;
 }
-
 function getNum2() {
     if(this.id != 'divide' && this.id != 'add' && this.id != 'multiply' && this.id != 'add' && this.id != 'subtract' && this.id != 'equals' && this.id != 'clear') {
-        if (emptyResult) {
-            resultBox.textContent = '';
-        } 
+        if (emptyResult)  resultBox.textContent = '';
         displayValue = this.textContent;
         resultBox.textContent += displayValue; // 9 a bastiysam 9
         number2 = resultBox.textContent;
